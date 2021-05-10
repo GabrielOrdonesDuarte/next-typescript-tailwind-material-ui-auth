@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core';
+import { Provider } from 'next-auth/client';
 import theme from '../lib/theme';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -22,7 +23,9 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Provider session={pageProps.session}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   );

@@ -1,72 +1,28 @@
-import { makeStyles, Paper, Theme, Typography } from '@material-ui/core';
-import Container from '../components/Container/Container';
-import GridItem from '../components/GridItem/GridItem';
+import { signIn, signOut, useSession } from 'next-auth/client';
 
-const Login: any = () => {
-  const classes = useStyles();
+const Home: any = () => {
+  const [session] = useSession();
+
   return (
     <>
-      <Container>
-        <GridItem sm={12} lg={6}>
-          <Paper className={classes.card1}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            dicta iusto molestiae quas rem officia est unde dignissimos
-            obcaecati aliquid porro quae accusamus? Et esse rerum iusto autem
-            incidunt fuga.
-          </Paper>
-        </GridItem>
-        <GridItem sm={12} lg={6}>
-          <Paper className={classes.card1}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            dicta iusto molestiae quas rem officia est unde dignissimos
-            obcaecati aliquid porro quae accusamus? Et esse rerum iusto autem
-            incidunt fuga.
-          </Paper>
-        </GridItem>
-      </Container>
-      <Container>
-        <GridItem sm={12} lg={4}>
-          <Paper className={classes.card2}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            dicta iusto molestiae quas rem officia est unde dignissimos
-            obcaecati aliquid porro quae accusamus? Et esse rerum iusto autem
-            incidunt fuga.
-          </Paper>
-        </GridItem>
-        <GridItem sm={12} lg={8}>
-          <Paper className={classes.card2}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-            dicta iusto molestiae quas rem officia est unde dignissimos
-            obcaecati aliquid porro quae accusamus? Et esse rerum iusto autem
-            incidunt fuga.
-            <h1
-              className={`text-red-500 bg-blue-900 inline-block ${classes.tamanhoFonte}`}
-            >
-              TailWind Exemplo
-            </h1>
-            <Typography variant="h1">h1</Typography>
-            <Typography variant="h2">h2</Typography>
-          </Paper>
-        </GridItem>
-      </Container>
+      <a href="/pagina1">Ir para pagina 1</a>
+      <br></br>
+      <br></br>
+      <br></br>
+      {!session && (
+        <>
+          Not signed in <br />
+          <button onClick={() => signIn('auth0')}>Sign in</button>
+        </>
+      )}
+      {session && (
+        <>
+          Signed in as {session.user.email} <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
     </>
   );
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  card1: {
-    padding: '15px',
-    textAlign: 'center',
-    color: theme.palette.custom.corLaranja,
-  },
-  card2: {
-    padding: '5px',
-    textAlign: 'right',
-    color: theme.palette.text.primary,
-  },
-  tamanhoFonte: {
-    fontSize: 20,
-  },
-}));
-
-export default Login;
+export default Home;
