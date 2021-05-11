@@ -7,6 +7,8 @@ const Home: any = () => {
   return (
     <>
       <Link href="/pagina1">Ir para pagina 1</Link>
+      <br />
+      <br />
       {!session && (
         <>
           Not signed in <br />
