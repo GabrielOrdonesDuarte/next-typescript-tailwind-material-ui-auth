@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 import Container from '../../components/Container/Container';
 import GridItem from '../../components/GridItem/GridItem';
@@ -50,7 +51,7 @@ const Login: any = () => {
               <Typography variant="h2">h2</Typography>
             </Paper>
           </GridItem>
-          <a href="/">Voltar</a>
+          <Link href="/">Voltar</Link>
         </Container>
       </RouteGuard>
     </>

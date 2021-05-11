@@ -40,7 +40,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontSize: 13,
+    fontSize: 15,
   },
   spacing: 4,
 });

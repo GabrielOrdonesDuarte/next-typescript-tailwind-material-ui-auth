@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 const Home: any = () => {
@@ -5,10 +6,7 @@ const Home: any = () => {
 
   return (
     <>
-      <a href="/pagina1">Ir para pagina 1</a>
-      <br></br>
-      <br></br>
-      <br></br>
+      <Link href="/pagina1">Ir para pagina 1</Link>
       {!session && (
         <>
           Not signed in <br />
